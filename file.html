@@ -212,7 +212,7 @@ function DelayedSubmission_Check() {
     var date = new Date();
     check_time = date.getTime();
     var limit_ms=check_time-initial_time;
-    if (limit_ms > 2000) { //Change value in milliseconds
+    if (limit_ms > 1000) { //Change value in milliseconds
        // alert("insert your function"); //Insert your function
 	    myFunction();
         clearInterval(setInverval_Variable);

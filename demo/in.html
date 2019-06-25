@@ -280,7 +280,8 @@ function myFunction() {
   sessionStorage.setItem("ilang", document.getElementById('typingarea').value);
 
 }
-		
+	var input = document.getElementById('typingarea');
+  input.addEventListener('keyup',function(){alert(input.value);});	
 		
 		
 		function DelayedSubmission() {
@@ -303,10 +304,6 @@ function DelayedSubmission_Check() {
     }
 }
 	</script>
-	<script>
-  var input = document.getElementById('typingarea');
-  input.addEventListener('keyup',function(){alert(input.value);});
-
-</script>
+	
 
 </body></html>

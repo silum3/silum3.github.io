@@ -127,8 +127,10 @@ body {
 							<option value="pramukhindic:tamil">Tamil</option>
 							<option value="pramukhindic:telugu">Telugu</option>
 							<option value="pramukhime:english" selected="selected">English </option>
-						</select>
-					<div class="panel-body">
+						</select>			<div class="panel-body">
+		
+		
+						<input id="typingarea" name="typingarea"   onkeyup="DelayedSubmission()" value="    "></input>
 						<fieldset id="settingssection" class="hidden">
 							<legend>Settings</legend>
 							<div class="checkbox-inline" id="settingsdigitinenglish">
@@ -142,7 +144,15 @@ body {
 								</select>
 							</div>
 						</fieldset>
-							<div class=" left">
+						<fieldset id="helpsection" class="hidden">
+							<legend>Quick Help</legend>
+							<a target="_blank" id="detailedhelplink">View Detailed Help</a>
+							<br>
+							<img src="img/pramukhime-english.png" id="quickhelpimg" alt="character map">
+							
+						</fieldset>
+					</div>
+
   <div class="centered">
     
 
@@ -159,15 +169,7 @@ body {
     </div>
   </div>
 </div>
-						<fieldset id="helpsection" class="hidden">
-							<legend>Quick Help</legend>
-							<a target="_blank" id="detailedhelplink">View Detailed Help</a>
-							<br>
-							<img src="img/pramukhime-english.png" id="quickhelpimg" alt="character map">
-							
-						</fieldset>
-					</div>
-			
+						
 		
 		
 		

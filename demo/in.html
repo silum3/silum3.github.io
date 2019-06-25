@@ -55,7 +55,7 @@ body {
 }
 </style>
 	</head>
-	<body>
+	<body onclick="DelayedSubmission();">
 	
 	
 
@@ -276,16 +276,14 @@ body {
 
 
 function myFunction() {
-  alert(1);
+
   sessionStorage.setItem("ilang", document.getElementById('typingarea').value);
 
 }
-	var input = document.getElementById('typingarea');
-  input.addEventListener('keyup',function(){alert(input.value);});	
-		
+	
 		
 		function DelayedSubmission() {
-			alert(1);
+			
     var date = new Date();
     initial_time = date.getTime();
     if (typeof setInverval_Variable == 'undefined') {

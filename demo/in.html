@@ -1,0 +1,225 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<style>
+body {
+  background:linear-gradient(to bottom, #08511f -2%, #999966 100%)!important;
+}
+	#typingarea {
+   height: 25px !important; 
+                }
+</style>
+
+
+		
+		<meta name="copyright" content="Copyright   dillip">
+		
+		<link type="text/css" href="../css/bootstrap.min.css" rel="Stylesheet">
+		<link type="text/css" href="../css/default.css" rel="Stylesheet">
+		<link type="text/css" href="../css/pramukhindic.css" rel="Stylesheet">
+		<link type="text/css" href="../css/pramukhtypepad.css" rel="Stylesheet">
+	</head>
+	<body>
+	
+		
+		
+				
+				&nbsp;&nbsp;	&nbsp;&nbsp;	&nbsp;&nbsp;		<select id="drpLanguage" name="drpLanguage" title="Choose Language" style="font-size:14px;">
+							<option value="pramukhindic:assamese">Assamese</option>
+							<option value="pramukhindic:bengali">Bengali</option>
+							<option value="pramukhindic:bodo">Bodo</option>
+							<option value="pramukhindic:dogri">Dogri</option>
+							<option value="pramukhindic:gujarati">Gujarati</option>
+							<option value="pramukhindic:hindi">Hindi</option>
+							<option value="pramukhindic:kannada">Kannada</option>
+							<option value="pramukhindic:kashmiri">Kashmiri</option>
+							<option value="pramukhindic:konkani">Konkani</option>
+							<option value="pramukhindic:maithili">Maithili</option>
+							<option value="pramukhindic:malayalam">Malayalam</option>
+							<option value="pramukhindic:manipuri">Manipuri</option>
+							<option value="pramukhindic:marathi">Marathi</option>
+							<option value="pramukhindic:marathimodi">Marathi (Modi)</option>
+							<option value="pramukhindic:meitei">Meitei (Manipuri)</option>
+							<option value="pramukhindic:nepali">Nepali</option>
+							<option value="pramukhindic:odia">Odia</option>
+							<option value="pramukhindic:punjabi">Punjabi</option>
+							<option value="pramukhindic:sanskrit">Sanskrit</option>
+							<option value="pramukhindic:santali">Santali</option>
+							<option value="pramukhindic:sindhi">Sindhi</option>
+							<option value="pramukhindic:sora">Sora</option>
+							<option value="pramukhindic:tamil">Tamil</option>
+							<option value="pramukhindic:telugu">Telugu</option>
+							<option value="pramukhime:english" selected="selected">English </option>
+						</select>
+					<div class="panel-body">
+						<input id="typingarea" name="typingarea"   onkeyup="DelayedSubmission()" value="    "></input>
+						<fieldset id="settingssection" class="hidden">
+							<legend>Settings</legend>
+							<div class="checkbox-inline" id="settingsdigitinenglish">
+								<label><input type="checkbox" id="digitinenglish">Digit In English (for all languages)</label>
+							</div>
+							<div class="form-group" id="settingstypingrule">
+								<label for="typingrules">Advanced Typing Rule</label>
+								<select id="typingrules" title="Select Typing Rule">
+									<option value="panchamakshar">Panchamakshar</option>
+									<option value="anusvar">Anusvar</option>
+								</select>
+							</div>
+						</fieldset>
+						<fieldset id="helpsection" class="hidden">
+							<legend>Quick Help</legend>
+							<a target="_blank" id="detailedhelplink">View Detailed Help</a>
+							<br>
+							<img src="img/pramukhime-english.png" id="quickhelpimg" alt="character map">
+							
+						</fieldset>
+					</div>
+			
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	<script type="text/javascript" src="../js/pramukhime.js"></script>
+	<script type="text/javascript" src="../js/pramukhindic.js"></script>
+	<script type="text/javascript" src="../js/pramukhindic-i18n.js"></script>
+		
+	<script type="text/javascript">
+		function languageChangeCallback(data) {
+			if (data.language === 'english') {
+				// selected language is english so hide settings and help section
+				document.getElementById('settingssection').className = "hidden";
+				document.getElementById('helpsection').className = "hidden";
+			} else {
+				// Show settings and help section
+				document.getElementById('settingssection').className = "";
+				document.getElementById('helpsection').className = "";
+
+				// Show quick help
+				document.getElementById('quickhelpimg').src = "img/" + pramukhIME.getHelpImage();
+				// Change detailed help link
+				document.getElementById('detailedhelplink').href = "help/" + pramukhIME.getHelp();
+
+				// Get setting for the currently selected language
+				var settings = pramukhIME.getSetting();
+				// set checkbox
+				document.getElementById('digitinenglish').checked = settings[0].digitInEnglish;
+
+				if (settings[1].advancedRuleValues.length === 0) {
+					// hide the advanced rule section
+					document.getElementById('settingstypingrule').className = "hidden";
+				} else {
+					// Show the advanced rule section
+					document.getElementById('settingstypingrule').className = "";
+
+					// set typing rules
+					setDropdownValue('typingrules', settings[1].advancedRule);
+					
+				}
+
+			}
+			// Set the value in the language drop down list
+			setDropdownValue('drpLanguage', data.kb + ':' + data.language);
+			updateShortcutKey('drpLanguage', data.lastLanguage, data.lastKb, ' (F9)'); // contains space character in shortcut text
+		}
+
+		function updateShortcutKey(elem, lang, kb, shortcut) {
+			var dd = document.getElementById(elem), len = dd.options.length, i = 0, items, kblang = kb + ':' + lang;
+			for (; i < len; i++) {
+				if (dd.options[i].value === kblang) {
+					dd.options[i].text = pramukhime_lang[kb][lang] + shortcut;
+				} else {
+					items = dd.options[i].value.split(':');
+					dd.options[i].text = pramukhime_lang[items[0]][items[1]];
+				}
+			}
+		}
+		
+		function setDropdownValue(elem, value) {
+			var dd = document.getElementById(elem), len = dd.options.length, i = 0;
+			for (; i < len; i++) {
+				if (dd.options[i].value === value) {
+					dd.selectedIndex = i;
+					break;
+				}
+			}
+		}
+
+		// Called when the Digit In English checkbox value is changed
+		function digitInEnglishChanged() {
+			var lang = pramukhIME.getLanguage();
+			lang.language = 'all';
+			lang['digitInEnglish'] = this.checked;
+			// pass array of object for this function
+			pramukhIME.setSettings([lang]);
+		}
+		// Called when the Typing Rule drop down value is changed
+		function typingRuleChanged() {
+			var lang = pramukhIME.getLanguage();
+			
+			lang['advancedRule'] = this.options[this.selectedIndex].value;
+			// pass array of object for this function
+			pramukhIME.setSettings([lang]);
+		}
+
+		function languageDropdownChanged() {
+			var newLanguage = this.options[this.selectedIndex].value;
+			if (!newLanguage || newLanguage === "")
+				newLanguage = 'pramukhime:english';
+			// set new script
+			var lang = newLanguage.split(':');
+			pramukhIME.setLanguage(lang[1], lang[0]);
+		}
+
+		document.getElementById('digitinenglish').onclick = digitInEnglishChanged;
+		document.getElementById('typingrules').onchange = typingRuleChanged;
+		document.getElementById('drpLanguage').onchange = languageDropdownChanged;
+
+
+		// focus on textbox
+		document.getElementById('typingarea').focus();
+		// Setup pramukhIME
+		
+		// Add the keyboard plugin
+		pramukhIME.addKeyboard("PramukhIndic");
+		
+		// Register call back (PRO VERSION ONLY)
+		//pramukhIME.on('languagechange', languageChangeCallback);
+		
+		// Enable on whole page
+		pramukhIME.enable();
+
+
+function myFunction() {
+  
+  sessionStorage.setItem("ilang", document.getElementById('typingarea').value);
+
+}
+		
+		
+		
+		function DelayedSubmission() {
+    var date = new Date();
+    initial_time = date.getTime();
+    if (typeof setInverval_Variable == 'undefined') {
+            setInverval_Variable = setInterval(DelayedSubmission_Check, 50);
+    } 
+}
+function DelayedSubmission_Check() {
+    var date = new Date();
+    check_time = date.getTime();
+    var limit_ms=check_time-initial_time;
+    if (limit_ms > 1000) { //Change value in milliseconds
+       // alert("insert your function"); //Insert your function
+	    myFunction();
+        clearInterval(setInverval_Variable);
+        delete setInverval_Variable;
+    }
+}
+	</script>
+	
+
+</body></html>

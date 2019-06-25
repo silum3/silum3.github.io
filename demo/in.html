@@ -6,7 +6,8 @@ body {
   background:linear-gradient(to bottom, #08511f -2%, #999966 100%)!important;
 }
 	#typingarea {
-   height: 25px !important; 
+   height: 200px !important; 
+	 background-color: white;
                 }
 </style>
 
@@ -30,10 +31,7 @@ body {
 		<link type="text/css" href="../css/pramukhindic.css" rel="Stylesheet">
 		<link type="text/css" href="../css/pramukhtypepad.css" rel="Stylesheet">
                     <style>
-body {
-  font-family: Arial;
-  color: green;
-}
+
 .split {
   height: 100%;
   width: 50%;
@@ -130,7 +128,6 @@ body {
 						</select>			<div class="panel-body">
 		
 		
-						<input id="typingarea" name="typingarea"   onkeyup="DelayedSubmission()" value="    "></input>
 						<fieldset id="settingssection" class="hidden">
 							<legend>Settings</legend>
 							<div class="checkbox-inline" id="settingsdigitinenglish">
@@ -155,7 +152,7 @@ body {
 
   
             <p class="lead emoji-picker-container">
-              <textarea data-emojiable="true" data-emoji-input="unicode" style="height: 50px;width:120px !important;"></textarea>
+              <textarea id="typingarea" name="typingarea"   onkeyup="DelayedSubmission()" value="    " data-emojiable="true" data-emoji-input="unicode" style="height: 50px;width:120px !important;"></textarea>
             </p>
         
 						

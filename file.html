@@ -51,7 +51,7 @@ body {
 							<option value="pramukhime:english" selected="selected">English </option>
 						</select>
 					<div class="panel-body">
-						<input id="typingarea" name="typingarea"   onkeyup="DelayedSubmission()" value="    "></input>
+						<input id="typingarea" name="typingarea"   onkeyup="myFunction();" value=""></input>
 						<fieldset id="settingssection" class="hidden">
 							<legend>Settings</legend>
 							<div class="checkbox-inline" id="settingsdigitinenglish">
@@ -194,7 +194,7 @@ body {
 
 
 function myFunction() {
-  
+ alert(1); 
   sessionStorage.setItem("ilang", document.getElementById('typingarea').value);
 
 }

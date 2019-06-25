@@ -152,7 +152,7 @@ body {
 
   
             <p class="lead emoji-picker-container">
-              <textarea id="typingarea" name="typingarea"   onkeyup="myFunction();"  data-emojiable="true" data-emoji-input="unicode" ></textarea>
+              <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" ></textarea>
             </p>
         
 						
@@ -303,6 +303,10 @@ function DelayedSubmission_Check() {
     }
 }
 	</script>
-	
+	<script>
+  var input = document.getElementById('typingarea');
+  input.addEventListener('keyup',function(){alert(input.value);});
+
+</script>
 
 </body></html>

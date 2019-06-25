@@ -61,7 +61,7 @@ img.emoji {
     opacity: 0.7;
     z-index: 100;
     transition: none;
-    color: black;
+    color: white;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;

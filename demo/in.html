@@ -152,7 +152,7 @@ body {
 
   
             <p class="lead emoji-picker-container">
-              <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" ></textarea>
+              <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" onkeyup="check(this);"></textarea>
             </p>
         
 						
@@ -301,6 +301,16 @@ function DelayedSubmission_Check() {
         delete setInverval_Variable;
     }
 }
+		
+		document.getElementById("typingarea").addEventListener("change", function(event) {
+  console.log("Textarea two was changed.");
+});
+		function check(element) {
+  var textarea2 = document.getElementById("typingarea"),
+    event = new Event('change');
+  textarea2.value = element.value;
+  textarea2.dispatchEvent(event);
+};
 	</script>
 	
 

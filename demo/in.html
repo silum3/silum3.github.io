@@ -302,14 +302,9 @@ function DelayedSubmission_Check() {
     }
 }
 		
-		document.getElementById("typingarea").addEventListener("change", function(event) {
-  console.log("Textarea two was changed.");
-});
+		
 		function check(element) {
-  var typingarea = document.getElementById("typingarea"),
-    event = new Event('change');
-  typingarea.value = element.value;
- typingarea.dispatchEvent(event);
+  console.log(12);
 };
 	</script>
 	

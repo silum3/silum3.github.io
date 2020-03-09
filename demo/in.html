@@ -154,8 +154,8 @@ body {
             <p class="lead emoji-picker-container">
               <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" ></textarea>
             </p>
-		sflkglkglklklhk
-        <button id="my">Try it</button>
+	
+        <button id="my">update</button>
 
 						
 		
@@ -306,6 +306,7 @@ function DelayedSubmission_Check() {
 		$(document).ready(function(){
         $("#my").click(function(){            
             console.log($(".emoji-wysiwyg-editor").text());
+		sessionStorage.setItem("ilang", $(".emoji-wysiwyg-editor").text());
         });
     });
 	

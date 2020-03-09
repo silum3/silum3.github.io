@@ -152,9 +152,10 @@ body {
 
   
             <p class="lead emoji-picker-container">
-              <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" onkeyup=" check(this);"></textarea>
+              <textarea id="typingarea" name="typingarea"    data-emojiable="true" data-emoji-input="unicode" ></textarea>
             </p>
-        
+        <button onclick="my()">Try it</button>
+
 						
 		
 		
@@ -303,10 +304,12 @@ function DelayedSubmission_Check() {
 }
 		
 		
-		function check(element) {
-  console.log(12);
-};
 	</script>
-	
+	<script>
+function my() {
+	console.log(234);
+  document.getElementsBYClassName("emoji-wysiwyg-editor").setAttribute("id", "democlass"); 
+}
+</script>
 
 </body></html>

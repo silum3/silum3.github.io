@@ -306,10 +306,10 @@ function DelayedSubmission_Check() {
   console.log("Textarea two was changed.");
 });
 		function check(element) {
-  var textarea2 = document.getElementById("typingarea"),
+  var typingarea = document.getElementById("typingarea"),
     event = new Event('change');
-  textarea2.value = element.value;
-  textarea2.dispatchEvent(event);
+  typingarea.value = element.value;
+ typingarea.dispatchEvent(event);
 };
 	</script>
 	
